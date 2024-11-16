@@ -15,8 +15,13 @@ import {
   Box,
 } from "@mui/material";
 import client from "../../router/Client";
-import { formatDate, toUpperCase, capitalizeWords, formatTime, isLate } from '../../helpers/helper';
-
+import {
+  formatDate,
+  toUpperCase,
+  capitalizeWords,
+  formatTime,
+  isLate,
+} from "../../helpers/helper";
 
 export default function TableRiwayat({ selectedDate }) {
   const [dataRiwayat, setDataRiwayat] = useState([]);
