@@ -30,7 +30,6 @@ export default function Kotak() {
   const handleChangePage = (newPage) => {
     setPage(newPage);
   };
-
   const startIndex = page * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
   const paginatedRows = data.slice(startIndex, endIndex);

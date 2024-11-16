@@ -80,7 +80,7 @@ const ChartComponent = () => {
   }, []); 
 
   return (
-    <Box sx={{ width: '100%', height: 700, position: 'relative' }}>
+    <Box sx={{ width: '100%', height: 700, position: 'relative', display: {lg: 'block', xs: 'none'}}}>
       <Box
         className="wrapper"
         sx={{

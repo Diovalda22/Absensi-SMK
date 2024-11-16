@@ -89,7 +89,7 @@ export default function Layout() {
           Riwayat
         </Typography>
       </Box>
-      <Grid container spacing={0} sx={{ height: "99%" }}>
+      <Grid container spacing={0} sx={{ height: "80%" }}>
         <Grid
           item
           xs={8}
@@ -138,6 +138,7 @@ export default function Layout() {
                 border: "1px",
                 borderRadius: 2,
                 boxShadow: "2px 4px 8px rgba(0.5, 0.1, 0.1, 0.1)",
+                mt: '-70px'
               }}
             >
               {/* Pass the formatted selectedDate as a prop to TableRiwayat */}
@@ -163,36 +164,7 @@ export default function Layout() {
           <Grid sx={{ height: "70%" }}>
             <Kalender />
           </Grid>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              paddingBottom: "20px",
-            }}
-          >
-            <Box
-              sx={{
-                width: "89%",
-                height: "190px",
-                bgcolor: "white",
-                padding: 2,
-                boxSizing: "border-box",
-                borderRadius: "6px",
-                border: "1px",
-              }}
-            >
-              <Typography variant="h6" sx={{ marginBottom: 2 }}>
-                Catatan {formatDate(selectedDate) || "Select a Date"}
-              </Typography>
-              <List>
-                {(todos[formatDate(selectedDate)] || []).map((todo, index) => (
-                  <ListItem key={index}>
-                    <ListItemText primary={todo} />
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          </Box>
+          
         </AnimatedKalenderGrid>
       </Grid>
     </Box>

@@ -14,7 +14,7 @@ export default function Card() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    client.get('cek-kehadiran').then(({data}) => {
+    client.get('presensi/guru').then(({data}) => {
       setData(data.data)
     })
   }, [])
@@ -184,7 +184,7 @@ export default function Card() {
                   <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                     <Box>
                       <Typography variant="subtitle1" fontWeight="semibold" color="#5A6A85">
-                        Total 
+                        Total
                       </Typography>
                       <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
                         {presensiCount} Siswa

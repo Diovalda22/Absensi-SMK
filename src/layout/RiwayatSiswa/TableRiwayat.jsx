@@ -15,6 +15,8 @@ import {
   Box,
 } from "@mui/material";
 import client from "../../router/Client";
+import { formatDate, toUpperCase, capitalizeWords, formatTime, isLate } from '../../helpers/helper';
+
 
 export default function TableRiwayat({ selectedDate }) {
   const [dataRiwayat, setDataRiwayat] = useState([]);
@@ -95,105 +97,74 @@ export default function TableRiwayat({ selectedDate }) {
         <Typography variant="h6" sx={{ textAlign: "center", padding: 2 }}>
           Data riwayat kosong
         </Typography>
-      ) : isMobile ? (
-        // Tampilan Card saat mobile
-        <Grid container spacing={2} sx={{ padding: 2 }}>
-          {dataRiwayat.map((row, index) => (
-            <Grid item xs={12} key={index}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h6">{row.hari}</Typography>
-                  <Typography variant="body1">
-                    Tanggal: {row.tanggal}
-                  </Typography>
-                  <Typography variant="body1">
-                    Absen: {row.waktu_datang}
-                  </Typography>
-                  <Typography variant="body1">
-                    Pulang: {row.waktu_pulang}
-                  </Typography>
-                  <Typography variant="body1">
-                    Keterangan: {row.keterangan}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
       ) : (
-        // Tampilan Table saat bukan mobile
-        <TableContainer
-          component={Paper}
-          sx={{ width: "100%", marginTop: 0, height: 300 }}
-        >
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell
-                  sx={{
-                    backgroundColor: "#ADD8E6",
-                    position: "sticky",
-                    top: 0,
-                    zIndex: 1,
-                  }}
-                >
-                  Hari
-                </TableCell>
-                <TableCell
-                  sx={{
-                    backgroundColor: "#ADD8E6",
-                    position: "sticky",
-                    top: 0,
-                    zIndex: 1,
-                  }}
-                >
-                  Tanggal
-                </TableCell>
-                <TableCell
-                  sx={{
-                    backgroundColor: "#ADD8E6",
-                    position: "sticky",
-                    top: 0,
-                    zIndex: 1,
-                  }}
-                >
-                  Absen
-                </TableCell>
-                <TableCell
-                  sx={{
-                    backgroundColor: "#ADD8E6",
-                    position: "sticky",
-                    top: 0,
-                    zIndex: 1,
-                  }}
-                >
-                  Pulang
-                </TableCell>
-                <TableCell
-                  sx={{
-                    backgroundColor: "#ADD8E6",
-                    position: "sticky",
-                    top: 0,
-                    zIndex: 1,
-                  }}
-                >
-                  Keterangan
-                </TableCell>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell
+                sx={{
+                  backgroundColor: "#ADD8E6",
+                  position: "sticky",
+                  top: 0,
+                  zIndex: 1,
+                }}
+              >
+                Hari
+              </TableCell>
+              <TableCell
+                sx={{
+                  backgroundColor: "#ADD8E6",
+                  position: "sticky",
+                  top: 0,
+                  zIndex: 1,
+                }}
+              >
+                Tanggal
+              </TableCell>
+              <TableCell
+                sx={{
+                  backgroundColor: "#ADD8E6",
+                  position: "sticky",
+                  top: 0,
+                  zIndex: 1,
+                }}
+              >
+                Absen
+              </TableCell>
+              <TableCell
+                sx={{
+                  backgroundColor: "#ADD8E6",
+                  position: "sticky",
+                  top: 0,
+                  zIndex: 1,
+                }}
+              >
+                Pulang
+              </TableCell>
+              <TableCell
+                sx={{
+                  backgroundColor: "#ADD8E6",
+                  position: "sticky",
+                  top: 0,
+                  zIndex: 1,
+                }}
+              >
+                Keterangan
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {dataRiwayat.map((row, index) => (
+              <TableRow key={index}>
+                <TableCell>{row.hari}</TableCell>
+                <TableCell>{formatDate(row.tanggal)}</TableCell>
+                <TableCell>{row.waktu_datang}</TableCell>
+                <TableCell>{row.waktu_pulang}</TableCell>
+                <TableCell>{row.keterangan}</TableCell>
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {dataRiwayat.map((row, index) => (
-                <TableRow key={index}>
-                  <TableCell>{row.hari}</TableCell>
-                  <TableCell>{row.tanggal}</TableCell>
-                  <TableCell>{row.waktu_datang}</TableCell>
-                  <TableCell>{row.waktu_pulang}</TableCell>
-                  <TableCell>{row.keterangan}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+            ))}
+          </TableBody>
+        </Table>
       )}
     </>
   );
